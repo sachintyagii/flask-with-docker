@@ -17,9 +17,10 @@ spec:
       containers:
       - name: flask
         image: sachindemo.azurecr.io/flask-with-docker:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 5000
------------------------
+        - containerPort: 80
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -30,5 +31,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 5000
+      targetPort: 80
   type: LoadBalancer
